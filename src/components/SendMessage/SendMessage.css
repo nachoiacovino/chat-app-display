@@ -1,0 +1,9 @@
+.SendMessage {
+  border-top: 1px solid grey;
+  position: sticky;
+  bottom: 0;
+}
+.SendMessage input {
+  width: 100%;
+  padding: 10px;
+}
