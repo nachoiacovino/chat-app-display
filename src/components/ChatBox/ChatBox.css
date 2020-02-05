@@ -1,5 +1,14 @@
 .ChatBox {
   background-color: white;
+  height: 100%;
   width: 400px;
   margin: auto;
+}
+@media screen and (max-width: 1224px) {
+  .ChatBox {
+    width: 100vw;
+  }
+}
+.ChatBox .ChatBox-messages {
+  overflow-y: auto;
 }

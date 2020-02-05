@@ -1,9 +1,16 @@
 .SendMessage {
-  border-top: 1px solid grey;
+  background-color: white;
   position: sticky;
   bottom: 0;
 }
 .SendMessage input {
-  width: 100%;
-  padding: 10px;
+  margin: 3px 10px;
+  width: 95%;
+  padding: 10px 15px;
+  border-radius: 50px;
+  border: 1px solid grey;
+  background-color: white;
+}
+.SendMessage input:focus {
+  outline: none;
 }

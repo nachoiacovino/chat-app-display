@@ -1,0 +1,13 @@
+.ArrowDown {
+  border: 1px solid grey;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  bottom: 50;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
