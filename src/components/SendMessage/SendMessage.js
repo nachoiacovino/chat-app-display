@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import useInputState from '../../hooks/useInputState'
 import './SendMessage.css'
 
@@ -20,4 +20,4 @@ const SendMessage = ({ addMsg }) => {
     )
 }
 
-export default SendMessage
+export default memo(SendMessage)

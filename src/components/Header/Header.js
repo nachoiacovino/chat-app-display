@@ -4,7 +4,7 @@ import './Header.css'
 const Header = ({ receivedMsgs }) => {
     return (
         <div className="Header">
-            Messages Received: {receivedMsgs}
+            Unread messages: {receivedMsgs}
         </div>
     )
 }

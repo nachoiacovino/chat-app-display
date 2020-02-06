@@ -1,20 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect, memo } from 'react'
+// import VizSensor from 'react-visibility-sensor'
 import './ChatMessage.css'
 import formatTime from '../../helpers/formatTime'
 import { ReactComponent as SingleTick } from '../../assets/svg/SingleTick.svg'
 import { ReactComponent as DoubleTick } from '../../assets/svg/DoubleTick.svg'
 import { ReactComponent as ReadTick } from '../../assets/svg/ReadTick.svg'
 
-const ChatMessage = ({ text, direction, timestamp, status }) => {
+const ChatMessage = ({ id, text, direction, timestamp, status, readMsg }) => {
+    const [statusIcon, setStatusIcon] = useState("")
     const time = formatTime(timestamp)
 
-    const msgStatus = status => {
-        if (status === "read") return <ReadTick />
-        else if (status === "sent") return <SingleTick />
-        else if (status === "received") return <DoubleTick />
-        else return ""
-    }
+    useEffect(() => {
+        if (direction === "out") {
+            if (status === "read") setStatusIcon(<ReadTick />)
+            else if (status === "sent") setStatusIcon(<SingleTick />)
+            else if (status === "received") setStatusIcon(<DoubleTick />)
+            else setStatusIcon("")
+        }
+    }, [direction, status])
     
+    useEffect(() => {
+        if (direction === "in" && status === "received") readMsg(id)
+    }, [direction, id, readMsg, status])
+
     return (
         <div className="ChatMessage-container">
             <div className={`ChatMessage-${direction === "in" ? "in" : "out"}`}>
@@ -24,13 +32,12 @@ const ChatMessage = ({ text, direction, timestamp, status }) => {
                 </div>
                 {direction === "out" && 
                     <div className="ChatMessage-status">
-                        {msgStatus(status)}
+                        {statusIcon}
                     </div>
                 }
             </div>
-            
         </div>
-    );
+    )
 }
 
-export default ChatMessage
+export default memo(ChatMessage)
