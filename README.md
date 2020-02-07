@@ -22,3 +22,11 @@ You can write a new message and send it, the message appears in the chat history
 The app is fully responsive, you can view it on any device and it will display correctly.
 
 You can see a demo of the app here: https://chat-app-display.now.sh/
+
+The whole project is on Github in a private repository, if you want access please provide a user so I can give it to you.
+
+### Credits
+App demo created by Ignacio Iacovino.
+Portfolio link: https://ignacioiacovino.com/
+LinkedIn link: https://www.linkedin.com/in/ignacio-iacovino/
+Github link: https://github.com/naknekv
