@@ -1,16 +1,17 @@
-import React, { useState, useRef } from 'react'
-// import InfiniteScroll from 'react-infinite-scroller'
-import { FixedSizeList as List } from 'react-window'
+import React, { useState, useRef, useEffect, memo } from 'react'
+import { FixedSizeList as List, areEqual } from 'react-window'
+import { withWindowSizeListener } from 'react-window-size-listener'
 import uuid from 'uuid/v4'
 import './ChatBox.css'
 import chat from '../../assets/chat.json'
 import ChatMessage from '../ChatMessage/ChatMessage.js'
 import SendMessage from '../SendMessage/SendMessage'
 import Header from '../Header/Header'
-import ArrowDown from '../ArrowDown/ArrowDown'
 
-const ChatBox = () => {
+const ChatBox = ({ windowSize: { windowHeight, windowWidth } }) => {
     const [messages, setMessages] = useState(chat)
+    const [deviceWidth, setDeviceWidth] = useState(400)
+    const [deviceHeight, setDeviceHeight] = useState(675)
     const receivedMsgs = messages.filter(msg => msg.direction === "in" && msg.status === "received")
     const listRef = useRef()
 
@@ -25,13 +26,10 @@ const ChatBox = () => {
             }])
     }   
 
-    const readMsg = id => {
-        setMessages(messages.map(msg => msg.id === id ? {...msg, "status": "read"} : msg))
-        console.log("hello hello")
-    }
+    const readMsg = id => setMessages(messages.map(msg => msg.id === id ? {...msg, "status": "read"} : msg))
 
-    const Row = ({ index, style }) => (
-        <div style={style}>
+    const Row = memo(({ index, style }) => (
+        <div style={style} className="ChatBox-Row">
            <ChatMessage 
                 key={messages[index].id} 
                 id={messages[index].id} 
@@ -42,40 +40,46 @@ const ChatBox = () => {
                 readMsg={readMsg} 
             />
         </div>
-    )
-
-    // console.log(receivedMsgs)
+    ), areEqual)
 
     const scrollDown = () => {
-        listRef.current.scrollToItem(messages.length)
-
-        for (let i = 0; i < receivedMsgs.length; i++) {
-            console.log(receivedMsgs)
-            readMsg(receivedMsgs.id)
-        }
+        let idx = messages.findIndex(msg => msg.direction === "in" && msg.status === "received")
+        console.log(messages[idx])
+        listRef.current.scrollToItem(idx)
     }
+
+
+    useEffect(() => {
+        if (windowWidth < 400) {
+            setDeviceHeight(windowHeight - windowHeight / 10)
+            setDeviceWidth(windowWidth)
+        } else {
+            setDeviceHeight(675)
+            setDeviceWidth(400)
+        }
+        
+    }, [windowHeight, windowWidth])
+
+    console.log(windowWidth)
+    console.log(windowHeight)
 
     return (
         <div className="ChatBox">
             <Header receivedMsgs={receivedMsgs.length} />
-            
             <div className="ChatBox-messages">
                 <List
                     ref={listRef}
-                    height={863}
+                    height={deviceHeight}
                     itemCount={messages.length}
-                    itemSize={45}
-                    width={400}
+                    itemSize={42}
+                    width={deviceWidth}
                 >
                     {Row}
                 </List>
             </div>
-            <ArrowDown scrollDown={scrollDown} />
-            
-            
-            <SendMessage addMsg={addMsg} />
+            <SendMessage addMsg={addMsg} scrollDown={scrollDown} buttonDisable={receivedMsgs.length === 0}/>
         </div>
     )
 }
 
-export default ChatBox
+export default withWindowSizeListener(ChatBox)

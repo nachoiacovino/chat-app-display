@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { memo } from 'react'
 import './ArrowDown.css'
 import { ReactComponent as Arrow } from '../../assets/svg/Arrow.svg'
 
-const ArrowDown = ({ scrollDown }) => {
+const ArrowDown = ({ scrollDown, buttonDisable }) => {
     return (
-        <div className="ArrowDown" onClick={scrollDown}>
+        <button className="ArrowDown" onClick={scrollDown} disabled={buttonDisable}>
             <Arrow />
-        </div>
+        </button>
     )
 }
 
-export default ArrowDown
+export default memo(ArrowDown)
