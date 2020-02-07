@@ -10,7 +10,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #0a298d;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   body {
     background-color: white;
   }

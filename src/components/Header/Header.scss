@@ -1,59 +1,59 @@
 .Header {
-    height: 80px;
-    background-color: white;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 10;
+  height: 80px;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid lightgray;
+
+  @media screen and (max-width: 450px) {
+    position: fixed;
+  }
+
+  .Header-msgs {
+    background-color: lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    height: 25px;
     border-radius: 12px 12px 0 0;
-    border-bottom: 1px solid lightgray;
 
-    @media screen and (max-width: 400px) {
-        position: fixed;
+    @media screen and (max-width: 450px) {
+      border-radius: 0;
+    }
+  }
+
+  .Header-user {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    height: 55px;
+
+    .Header-user-avatar {
+      margin: 0 12px;
     }
 
-    .Header-msgs {
-        background-color: lightgrey;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .Header-user-title {
+      display: flex;
+      flex-direction: column;
+
+      justify-content: space-evenly;
+
+      p {
+        margin: 0;
+      }
+
+      .Header-username {
+        align-self: flex-start;
+      }
+
+      .Header-writing {
         font-size: 14px;
-        height: 25px;
-        border-radius: 12px 12px 0 0;
-
-        @media screen and (max-width: 400px) {
-            border-radius: 0;
-        }
+        color: rgb(70, 70, 70);
+      }
     }
-
-    .Header-user {
-        display: flex;
-        padding: 10px;
-        align-items: center;
-        height: 55px;
-
-        .Header-user-avatar {
-            margin: 0 12px;
-        }
-
-        .Header-user-title {
-            display: flex;
-            flex-direction: column;
-
-            justify-content: space-evenly;
-
-            p {
-                margin: 0;
-            }
-
-            .Header-username {
-                align-self: flex-start;
-            }
-
-            .Header-writing {
-                font-size: 14px;
-                color: rgb(70, 70, 70);
-            }
-        }
-    }
+  }
 }

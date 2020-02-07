@@ -10,8 +10,8 @@ import Header from '../Header/Header'
 
 const ChatBox = ({ windowSize: { windowHeight, windowWidth } }) => {
     const [messages, setMessages] = useState(chat)
-    const [deviceWidth, setDeviceWidth] = useState(400)
-    const [deviceHeight, setDeviceHeight] = useState(675)
+    const [deviceWidth, setDeviceWidth] = useState(450)
+    const [deviceHeight, setDeviceHeight] = useState(775)
     const receivedMsgs = messages.filter(msg => msg.direction === "in" && msg.status === "received")
     const listRef = useRef()
 
@@ -50,12 +50,12 @@ const ChatBox = ({ windowSize: { windowHeight, windowWidth } }) => {
 
 
     useEffect(() => {
-        if (windowWidth < 400) {
-            setDeviceHeight(windowHeight - windowHeight / 10)
+        if (windowWidth < 450) {
+            setDeviceHeight(windowHeight - windowHeight / 20)
             setDeviceWidth(windowWidth)
         } else {
-            setDeviceHeight(675)
-            setDeviceWidth(400)
+            setDeviceHeight(775)
+            setDeviceWidth(450)
         }
         
     }, [windowHeight, windowWidth])

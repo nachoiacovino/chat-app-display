@@ -9,16 +9,19 @@
   height: 45px;
   border-radius: 0 0 12px 12px;
 }
-@media screen and (max-width: 400px) {
+
+@media screen and (max-width: 450px) {
   .SendMessage {
     border-radius: 0;
     position: fixed;
   }
 }
+
 .SendMessage form {
   width: 80%;
   margin: 3px 5px 3px 10px;
 }
+
 .SendMessage input {
   width: 100%;
   padding: 10px 15px;
@@ -26,6 +29,7 @@
   border: 1px solid grey;
   background-color: white;
 }
+
 .SendMessage input:focus {
   outline: none;
 }

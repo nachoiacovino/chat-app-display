@@ -8,11 +8,13 @@
   border-radius: 12px 12px 0 0;
   border-bottom: 1px solid lightgray;
 }
-@media screen and (max-width: 400px) {
+
+@media screen and (max-width: 450px) {
   .Header {
     position: fixed;
   }
 }
+
 .Header .Header-msgs {
   background-color: lightgrey;
   display: flex;
@@ -22,31 +24,38 @@
   height: 25px;
   border-radius: 12px 12px 0 0;
 }
-@media screen and (max-width: 400px) {
+
+@media screen and (max-width: 450px) {
   .Header .Header-msgs {
     border-radius: 0;
   }
 }
+
 .Header .Header-user {
   display: flex;
   padding: 10px;
   align-items: center;
   height: 55px;
 }
+
 .Header .Header-user .Header-user-avatar {
   margin: 0 12px;
 }
+
 .Header .Header-user .Header-user-title {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
+
 .Header .Header-user .Header-user-title p {
   margin: 0;
 }
+
 .Header .Header-user .Header-user-title .Header-username {
   align-self: flex-start;
 }
+
 .Header .Header-user .Header-user-title .Header-writing {
   font-size: 14px;
   color: #464646;

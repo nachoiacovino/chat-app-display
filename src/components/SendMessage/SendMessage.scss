@@ -1,33 +1,33 @@
 .SendMessage {
-    width: inherit;
+  width: inherit;
+  background-color: white;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 45px;
+  border-radius: 0 0 12px 12px;
+
+  @media screen and (max-width: 450px) {
+    border-radius: 0;
+    position: fixed;
+  }
+
+  form {
+    width: 80%;
+    margin: 3px 5px 3px 10px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 50px;
+    border: 1px solid grey;
     background-color: white;
-    position: sticky;
-    bottom: 0;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 45px;
-    border-radius: 0 0 12px 12px;
 
-    @media screen and (max-width: 400px) {
-        border-radius: 0;
-        position: fixed;
+    &:focus {
+      outline: none;
     }
-
-    form {
-        width: 80%;
-        margin: 3px 5px 3px 10px;
-    }
-
-    input {
-        width: 100%;
-        padding: 10px 15px;
-        border-radius: 50px;
-        border: 1px solid grey;
-        background-color: white;
-
-        &:focus {
-            outline: none;
-        }
-    }
+  }
 }
