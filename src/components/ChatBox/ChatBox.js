@@ -48,7 +48,6 @@ const ChatBox = ({ windowSize: { windowHeight, windowWidth } }) => {
         listRef.current.scrollToItem(idx)
     }
 
-
     useEffect(() => {
         if (windowWidth < 450) {
             setDeviceHeight(windowHeight - windowHeight / 20)
@@ -59,9 +58,6 @@ const ChatBox = ({ windowSize: { windowHeight, windowWidth } }) => {
         }
         
     }, [windowHeight, windowWidth])
-
-    console.log(windowWidth)
-    console.log(windowHeight)
 
     return (
         <div className="ChatBox">
