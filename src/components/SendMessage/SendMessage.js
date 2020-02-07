@@ -15,7 +15,7 @@ const SendMessage = ({ addMsg, scrollDown, buttonDisable }) => {
     return (
         <div className="SendMessage">
             <form onSubmit={handleSubmit}>
-                <input type="text" name="message" value={message} onChange={setMessage} placeholder="Send a message..." />
+                <input type="text" name="message" value={message} onChange={setMessage} placeholder="Send a message..." aria-label="Send a message" />
             </form>
             <ArrowDown scrollDown={scrollDown} buttonDisable={buttonDisable} />
         </div>
